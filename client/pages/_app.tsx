@@ -1,7 +1,20 @@
 import '../styles/globals.css'
-import type { AppProps } from 'next/app'
+import type {
+  ExternalProvider,
+  JsonRpcFetchFunc,
+} from "@ethersproject/providers";
+import { Web3Provider } from "@ethersproject/providers";
+import { Web3ReactProvider } from "@web3-react/core";
+import type { AppProps } from "next/app";
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+function getLibrary(provider: ExternalProvider | JsonRpcFetchFunc) {
+  return new Web3Provider(provider);
 }
-export default MyApp
+
+export default function EveApp({ Component, pageProps }: AppProps) {
+  return (
+    <Web3ReactProvider getLibrary={getLibrary}>
+      <Component {...pageProps} />
+    </Web3ReactProvider>
+  );
+}
