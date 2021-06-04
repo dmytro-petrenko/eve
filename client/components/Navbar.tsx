@@ -38,20 +38,23 @@ const AppNavbar: FC = () => {
     return (
         <StyledNavbar>
             <div>
-                <button>
+                <button
+                    data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasExample"
+                >
                     <FontAwesomeIcon icon={faChevronLeft} />
                 </button>
 
-                <StyledLogo>
-                    <Link href="/">
+                <Link href="/">
+                    <StyledLogo>
                         <Image
                             src="/eve.svg"
                             alt="EVE Logo"
                             width={72}
                             height={28}
                         />
-                    </Link>
-                </StyledLogo>
+                    </StyledLogo>
+                </Link>
 
                 <button>
                     <FontAwesomeIcon icon={faBars} />
